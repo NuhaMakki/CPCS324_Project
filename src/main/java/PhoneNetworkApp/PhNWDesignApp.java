@@ -11,6 +11,5 @@ public class PhNWDesignApp {
         algorithm and displaying the returned results and the measured running time. The output should show 
         the requested comparison between the results & run time of the algorithms.
         */
-    System.out.println("   ");
     }
 }
