@@ -55,6 +55,12 @@ public class Graph {
     }     
     
     
-
+    public void createEdge() {
+        
+    }
+    
+    public void createVertex() {
+        
+    }
     
 }
