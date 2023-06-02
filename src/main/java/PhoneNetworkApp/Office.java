@@ -14,6 +14,15 @@ public class Office extends Vertex{
     //            variables declaration 
     // ---------------------------------------------
 
+    
+    
+    // ---------------------------------------------
+    //               constructor
+    // --------------------------------------------- 
+
+    public Office(String label) {
+        this.setLabel(label);
+    }
 
     
     // ---------------------------------------------
@@ -22,8 +31,8 @@ public class Office extends Vertex{
     
     @Override
      public void displayInfo(){     
-        /*
-        Override/complete the displayInfo() method to display the information of the class attributes.
-        */ 
+        System.out.print("Office No. ");
+        super.displayInfo();
+
     } 
 }

@@ -1,13 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package PhoneNetworkApp;
 
-/**
- *
- * @author NOHAM
- */
-public class BluePrintsGraph {
+import GraphFramework.Edge;
+import GraphFramework.Graph;
+import GraphFramework.Vertex;
+
+////this class is a subclass of Vertex
+public class BluePrintsGraph extends Graph{
+   
+    // ---------------------------------------------
+    //            variables declaration 
+    // ---------------------------------------------
+    public BluePrintsGraph(boolean isDigraph, int veticesNo, int edgeNo) {
+        super(isDigraph, veticesNo, edgeNo);
+    }
+
+    public BluePrintsGraph() {
+        super();
+    }
+
     
+    // ---------------------------------------------
+    //                   functions
+    // ---------------------------------------------
+    @Override
+    public Edge createEdge(Vertex source, Vertex target, int weghit) {
+        return new Line( (Office)source, (Office)target, weghit);
+    }
+    
+    @Override
+    public Vertex createVertex(String lable) {
+        return new Office(lable); 
+    }
 }
+

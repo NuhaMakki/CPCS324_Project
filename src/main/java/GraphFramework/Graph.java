@@ -2,9 +2,13 @@
 package GraphFramework;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Random;
+import java.util.Scanner;
 
 //this class defines the structure of a graph
-public class Graph {
+public abstract class Graph {
     
     // ---------------------------------------------
     //            variables declaration 
@@ -13,8 +17,70 @@ public class Graph {
     int edgeNo; // number of edges of the graph
     boolean isDigraph; // true ==> directed graph   ||   false ==> undirected graph    
     ArrayList<Vertex> vertices = new ArrayList<Vertex>();  //represents the list of vertices of a graph
-   
+
     
+    
+    
+    // ---------------------------------------------
+    //                  constructor
+    // --------------------------------------------- 
+
+    public Graph(boolean isDigraph, int veticesNo, int edgeNo) {
+        // veticesNo = veticesNo;
+        // edgeNo = edgeNo;
+        this.isDigraph = isDigraph;
+    }
+
+    public Graph() {
+        this.isDigraph=false;
+    }
+    
+
+    // ---------------------------------------------
+    //            setters & getters 
+    // ---------------------------------------------    
+
+    public int getVeticesNo() {
+        return veticesNo;
+    }
+
+    public void setVeticesNo(int veticesNo) {
+        this.veticesNo = veticesNo;
+    }
+
+    public int getEdgeNo() {
+        return edgeNo;
+    }
+
+    public void setEdgeNo(int edgeNo) {
+        this.edgeNo = edgeNo;
+    }
+
+    public boolean isIsDigraph() {
+        return isDigraph;
+    }
+
+    public void setIsDigraph(boolean isDigraph) {
+        this.isDigraph = isDigraph;
+    }
+
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(ArrayList<Vertex> vertices) {
+        this.vertices = vertices;
+    }
+    
+    public Vertex containsVertices(String str) {
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i).getLabel().equals(str))
+                return vertices.get(i);
+        }
+        return null;
+    }    
+    
+
     
     
     
@@ -22,45 +88,110 @@ public class Graph {
     //                   functions 
     // ---------------------------------------------   
     
+
+    // This method creates a random graph
+    // takes as parameters the number of vertices and the number of edges
+    public void makeGraph(int verticesNo, int edgesNo) {     
+        
+        //for loop to create vertices, add them to the list
+        for (int i = 1; i <= verticesNo; i++) {
+                this.vertices.add(createVertex(  "O"+i )  ); // add vertex to vertices list
+                this.veticesNo++; //increments the veticesNo by one
+        }
+        
+        // shuffle the list
+        Collections.shuffle(this.vertices);
+        Random random = new Random();// create Random object.. used to get random 
+        int i = 0;
+        int j = 1;
+        int count =0;        
+        while(edgeNo<edgesNo){
+            // create edges
+            addEdge( vertices.get(i), vertices.get(j), (random.nextInt(1, 10000))   );
+            // increment i, j
+            i = (i + 1) % vertices.size();
+            j = (j + 1) % vertices.size();
+            count++;             
+            // reset i=0 & j with new value to get distenct 
+            if (count== vertices.size()){
+                j++;
+                count=0; 
+            }
+            
+        }    
+
+    }// End makeGraph method
+    // ---------------------------------------------   
+
+   
+     
+    // This method reads the edges and vertices from the text file and place data in a Graph
+    public void readGraphFromFile(Scanner read) {     
+
+        // while loop to read all graph's edges from file
+        while (read.hasNext()){    
+            
+            //SourseOffice
+            String SourseOffice = read.next(); //read SourseOffice
+            Vertex source = getVertex (SourseOffice); // this method return the vertex (creat it if not exist)
+            
+            //targetOffice
+            String targetOffice = read.next(); // read targetOffice
+            Vertex target = getVertex (targetOffice); // this method return the vertex (creat it if not exist)
+            
+            //Read the weight
+            int weight= read.nextInt(); 
+            this.addEdge(source, target, weight); // this method creates an edge object
+        }
+    }// End readGraphFromFile method
+    // ---------------------------------------------   
     
-    public void makeGraph() {     
-        /*
-        makeGraph(): this function takes as parameters the number of vertices and the number of edges. It is 
-        responsible for creating a graph object with the specified parameters and randomly initializes the vertices’ 
-        labels, creating edges that connects the created vertices randomly and assigning them random weights. 
-        Make sure that the resulting graph is connected. 
-        */ 
-    }
+    
+    // This method used in readGraphFromFile
+    // it checks:  IF vertex already exist ==> return vertex   ||    ELSE ==> creat vertex then return it
+    public Vertex getVertex (String vLable) {   
+        Vertex v = this.containsVertices(vLable); //check:  IF vertex already exist ==> get vertex
+            if (v==null){ // if not exist
+                v= this.createVertex(vLable); //creat vertex
+                this.vertices.add(v); // add vertex to vertices list
+                this.veticesNo++; //increments the veticesNo by one
+            }
+        return v;
+    }// End getVertex method
+    // ---------------------------------------------   
+    
+    
+    
+    // This function creates an edge object
+    // source vertex v, the target vertex u and w the vertex weight as parameters  
+    public void addEdge(Vertex v, Vertex u, int w) {   
+        //creates an edge object
+        Edge edge = this.createEdge(v, u, w);
+        //assigns the target vertex to the adjacent list of the source vertex
+        v.getAdjList().insertNode(edge);        
+        this.edgeNo++; //increments the EdgeNo by one
+        
+        //if the graph is undirected ==> add the source vertex to the adjacent list of the target vertex
+        if (!isDigraph){
+            u.getAdjList().insertNode(edge);        
+            this.edgeNo++; // //increments the EdgeNo again if it is an undirected graph
+        }
+    }// End addEdge method
+    // ---------------------------------------------   
+     
+    
+    // this method to createEdge
+    // has been overridden in Line class
+    public abstract Edge createEdge(Vertex source, Vertex target, int weghit);
+    // End createEdge method
+    // ---------------------------------------------   
 
     
-    public void readGraphFromFile() {     
-        /*
-        readGraphFromFile(fileName) reads the edges and vertices from the text file whose name is 
-        specified by the parameter filename and place data in a Graph object. In this project, you need to 
-        create a text file that contains the graph presented in requirement 1. The file format is shown in Appendix 
-        II. It is responsible for doing some preprocessing then call the addEdge() method to determine the 
-        position of the Edge.
-        */ 
-    }    
-    
+    // this method to createVertex
+    // has been overridden in Office class
+    public abstract Vertex createVertex(String lable);
+    // End Vertex method
+    // ---------------------------------------------   
 
-    public void addEdge() {     
-        /*
-        addEdge(v,u,w): is a function that creates an edge object and passes the source vertex v, the target 
-        vertex and w the vertex weight as parameters, assigns the target vertex to the adjacent list of the source 
-        vertex and if the graph is undirected then it will add the source vertex to the adjacent list of the target
-        vertex. It increments the EdgeNo by one in case it is a directed graph and by two if it is an undirected 
-        graph.
-        */ 
-    }     
-    
-    
-    public void createEdge() {
-        
-    }
-    
-    public void createVertex() {
-        
-    }
-    
-}
+ 
+}//End of class

@@ -3,10 +3,9 @@ package GraphFramework;
 
 import java.util.ArrayList;
 
-/* this class is a superclass representing the general characteristics of an algorithm
-for computing the minimum spanning tree. 
-It has three subclasses: KruskalAlg and MHPrimAlg.*/
-public class MSTAlgorithm {
+// this class is a superclass representing the general characteristics of an algorithm for computing the minimum spanning tree. 
+// It has 2 subclasses: KruskalAlg and MHPrimAlg.
+public abstract class MSTAlgorithm {
     
     // ---------------------------------------------
     //            variables declaration 
@@ -21,11 +20,10 @@ public class MSTAlgorithm {
     //                   functions 
     // ---------------------------------------------   
     
+    // this method tois an abstract function to display Resulting MST
+    // has been overridden in Office class
+    public abstract void displayResultingMST();    
+    // End Vertex method
+    // --------------------------------------------- 
     
-    public void displayResultingMST(){     
-        /*
-        displayResultingMST(): it is an abstract function that should be implemented by the subclasses’ 
-        polymorphic functions.
-        */ 
-    }
 }
