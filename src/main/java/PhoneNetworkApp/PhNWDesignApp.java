@@ -1,3 +1,24 @@
+/*
+Department of Computer Science
+CPCS 324: Algorithms and Data Structures (II) 
+Spring 2023 Group Project – Part I
+Implement KruskalAlgorithm and Prim Algorithm, and using them to compute the minmum sppaning tree problem
+
+---------------------------------------
+Name           | ID         | Section
+---------------------------------------
+Nuha Makki     | 2024579    | B8	   
+Rawan Algamdi  | 2005446    | B8		   
+Rawan Aljedani | 1906454    | B0B	
+Joud Alahmadi  | 2006214    | B0B		   
+---------------------------------------
+
+project link on GitHub:
+https://github.com/NuhaMakki/CPCS324_Project.git
+
+
+*/
+
 
 package PhoneNetworkApp;
 
@@ -122,13 +143,27 @@ public class PhNWDesignApp {
                             ***********************************************************************************************************
                             """);       
     
-        System.out.println("------------------------------------------------------------------------");
-        System.out.printf("        %-25s|         %-25s\n", "Kruskal's Algorithm" , "prim's Algorithm");
-        System.out.println("------------------------------------------------------------------------");
-        System.out.printf("%-15s|  %-15s|   %-15s|  %-15s\n", "Total runtime" , "cost", "Total runtime" , "cost");
+        System.out.println("----------------------------------------------------------------------------------");
+        System.out.printf("%-7s|%-7s|        %-25s|         %-25s\n", "Office", "line", "Kruskal's Algorithm" , "prim's Algorithm");
+        System.out.println("----------------------------------------------------------------------------------");
+        System.out.printf("%-7s|%-7s|%-15s|  %-15s|   %-15s|  %-15s\n", "n", "m", "Total runtime" , "cost", "Total runtime" , "cost");
     }    
     // --------------------------------------------- 
 
 }// class End
 
 
+/*
+Extra Specifications:
+    *  Visual Studio Code
+    * GitHab
+    * hardware configuration (for the device used in copmuting the rinTime):
+        - Hardware type: Asus ZenBook Flip 13 UX363EA
+        - Processor: 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz 2.80 GHz
+        - RAM: 16.0 GB (15.7 GB usable)
+        - System Type: 64-bit operating system, x64-based processor
+    * operating system: Windows
+        - Edition: Windows 11 Home
+        - Version: 21H2
+        - OS build: 22000.1574
+*/
