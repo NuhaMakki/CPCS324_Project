@@ -15,7 +15,25 @@ This project focuses on designing a **Phone Network System** using **Minimum Spa
 ## 🛠️ Tech Stack
 - **Programming Language:** Java
 
-## 📌 Input & Output Graphs
+## 📌 Input Graph vs. Output Graph  
+
+The visualization below illustrates the impact of applying **Minimum Spanning Tree (MST) algorithms** on a graph:  
+
+1. **Before Applying MST:**  
+   - Shows the original graph with all its edges.  
+
+2. **After Applying MST:**  
+   - Displays only the **minimum-weight edges** that connect all vertices, forming the MST.  
+   - Eliminates unnecessary edges while ensuring full connectivity at minimal cost.  
+
+This comparison visually demonstrates how Kruskal’s and Prim’s algorithms efficiently reduce the graph to its most optimal spanning structure.
+
+<p align="center">  
+  <img src="MST_img/MST_Graph.png" width="80%" alt="MST Computation Before and After">  
+</p>  
+
+
+
 <p align="center"> <img src="MST_img/MST_Graph.png" width="80%" alt="MST Computation from File Input"> </p>
 
 ## 📌 System Components
@@ -37,20 +55,20 @@ The project defines a **Graph Framework** consisting of:
 - Outputs the MST and its cost.
 
 ## 📷 Screenshots of Output
-### Requirement 1: MST Computation from File Input
+### Output 1: MST Computation from File Input
 - Kruskal and Prim algorithms generate the MST from a predefined graph.
 - Example Output:
 <p align="center"> <img src="MST_img/MST_Computation_from_File_Input.png" width="80%" alt="MST Computation from File Input"> </p>
 
 
-### Requirement 2: Random Graph Performance Comparison
+### Output 2: Random Graph Performance Comparison
 - Graphs are generated and tested with both algorithms.
 - Execution times are printed for different input sizes.
 - Example Output:
 <p align="center"> <img src="MST_img/Random_Graph_Performance_Comparison.png" width="80%" alt="Random Graph Performance Comparison"> </p>
 
 
-## 📈 Experimental Analysis
+## 📈 Experimental Analysis of Random Graph Performance
 ### 🔬 Graph Generation
 A function `makeGraph(n, m)` generates random graphs for:
 - `n=1000` with `m=10000, 15000, 25000`
@@ -71,9 +89,11 @@ A function `makeGraph(n, m)` generates random graphs for:
 ### 🔧 Installation & Setup
 1️⃣ **Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/phone-network-mst.git
+   git clone https://github.com/NuhaMakki/Phone_Network_Design_MST_Algorithms.git
    ```
+
 2️⃣ **Open the project in your preferred Java IDE.**
+
 3️⃣ **Run the main program `PhoneNWDesignApp.java`.**
 
 ## 🔍 Usage Guide
