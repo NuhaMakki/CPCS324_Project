@@ -55,14 +55,14 @@ The project defines a **Graph Framework** consisting of:
 ### Output 1: MST Computation from File Input
 - Kruskal and Prim algorithms generate the MST from a predefined graph.
 - Example Output:
-<p align="center"> <img src="MST_img/MST_Computation_from_File_Input.png" width="80%" alt="MST Computation from File Input"> </p>
+<p align="center"> <img src="MST_img/MST_Computation_from_File_Input1.png" width="80%" alt="MST Computation from File Input"> </p>
 
 
 ### Output 2: Random Graph Performance Comparison
 - Graphs are generated and tested with both algorithms.
 - Execution times are printed for different input sizes.
 - Example Output:
-<p align="center"> <img src="MST_img/Random_Graph_Performance_Comparison.png" width="80%" alt="Random Graph Performance Comparison"> </p>
+<p align="center"> <img src="MST_img/Random_Graph_Performance_Comparison1.png" width="80%" alt="Random Graph Performance Comparison"> </p>
 
 
 ## 📈 Experimental Analysis of Random Graph Performance
@@ -78,7 +78,7 @@ A function `makeGraph(n, m)` generates random graphs for:
     <p align="center"> <img src="MST_img/average_runtimes.png" width="80%" alt="Random Graph Performance Comparison"> </p>
 - **Graph Plotting:** Compares performance using **time complexity analysis**.
   - Kruskal's and Prim's Average Runtimes Plot:
-    <p align="center"> <img src="MST_img/Average_of_Kruskal_and_Prim.png" width="80%" alt="Random Graph Performance Comparison"> </p>
+    <p align="center"> <img src="MST_img/Average_of_Kruskal_and_Prim1.png" width="80%" alt="Random Graph Performance Comparison"> </p>
 
 
 
