@@ -33,9 +33,6 @@ This comparison visually demonstrates how Kruskal’s and Prim’s algorithms ef
 </p>  
 
 
-
-<p align="center"> <img src="MST_img/MST_Graph.png" width="80%" alt="MST Computation from File Input"> </p>
-
 ## 📌 System Components
 ### 📜 Graph Representation
 The project defines a **Graph Framework** consisting of:
